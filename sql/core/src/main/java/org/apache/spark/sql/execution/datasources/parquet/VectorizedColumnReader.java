@@ -354,7 +354,7 @@ public class VectorizedColumnReader {
     }
     // for PARQUET-246 (See VectorizedDeltaByteArrayReader.setPreviousValues)
     if (CorruptDeltaByteArrays.requiresSequentialReads(writerVersion, dataEncoding) &&
-        previousReader instanceof RequiresPreviousReader) {
+        dataColumn instanceof RequiresPreviousReader) {
       // previousReader can only be set if reading sequentially
       ((RequiresPreviousReader) dataColumn).setPreviousReader(previousReader);
     }
